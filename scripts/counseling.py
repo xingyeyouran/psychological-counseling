@@ -10,7 +10,7 @@ def counseling(question: str, credential: str):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    question = sys.argv[0]
-    credential = sys.argv[1]
+    question = sys.argv[1]
+    credential = sys.argv[2]
     counseling(question, credential)
 
