@@ -30,12 +30,13 @@ def counseling(question: str, order_no: str, credential: str) -> str:
     except urllib.error.URLError as e:
         raise RuntimeError(f"Counseling request failed: {e}") from e
 
-    if body.get("responseCode") != "200":
+    pay_status = body.get("payStatus")
+
+    if body.get("responseCode") != "200" and "ERROR" != pay_status:
         raise RuntimeError(
             f"Counseling failed: {body.get('responseMessage', 'unknown error')}"
         )
 
-    pay_status = body.get("payStatus")
     print(f"PAY_STATUS: {pay_status}")
 
     answer = body.get("answer")
